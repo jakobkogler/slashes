@@ -1,7 +1,7 @@
 import sys
 
 
-def execute_code(code):
+def execute_code(code, debug=False):
 	mode = 0
 	pat = ''
 	sub = ''
@@ -53,16 +53,29 @@ def execute_code(code):
 			tex = ''.join(tex)
 
 		if tex:
-			execute_code(tex)
+			if debug:
+				print('\n-----------')
+				print(tex)
+				print('\n-----------')
+
+			execute_code(tex, debug)
 
 
 
 def main():
 	if len(sys.argv) == 1:
 		return
+
+	code = ''
+	debug = False
+
 	with open(sys.argv[1]) as file:
 		code = '\n'.join(line.rstrip('\n') for line in file)
-	execute_code(code)
+
+	if len(sys.argv) > 2 and sys.argv[2] == '-d':
+		debug = True
+
+	execute_code(code, debug)
 
 	
 
