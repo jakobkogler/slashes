@@ -73,7 +73,7 @@ def execute_code(code, limit=float('inf'), print_func=None, one_step=False, prin
             limit -= 1
 
         if tex and not one_step:
-            execute_code(tex, limit, print_func, one_step)
+            execute_code(tex, limit, print_func, one_step, print2_func)
         
     if one_step:
         print2_func(tex)

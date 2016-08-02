@@ -29,6 +29,7 @@ class InterpreterWindow(QMainWindow, Ui_MainWindow):
     def runCode(self):
         self.intermedBox.hide()
         self.resultTextEdit.clear()
+        self.intermediateTextEdit.clear()
         code = self.codeTextEdit.toPlainText()
         execute_code(code, int(self.limitationLineEdit.text()), self.appendToResultTextEdit, False, self.intermediateTextEdit.setPlainText)
         if self.intermediateTextEdit.toPlainText():
