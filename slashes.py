@@ -1,11 +1,16 @@
 import sys
 
 
-def execute_code(code, debug=False, print_func=None):
+def execute_code(code, limit=float('inf'), print_func=None, one_step=False, print2_func=None):
     if not print_func:
         def myPrint(x):
             print(x, end='')
         print_func = myPrint        
+
+    if not print2_func:
+        def myPrint(x):
+            print(x, end='')
+        print2_func = myPrint        
 
     mode = 0
     pat = ''
@@ -50,21 +55,28 @@ def execute_code(code, debug=False, print_func=None):
     
     if mode == 3:
         while pat in tex:
+            if limit <= 0:
+                output = "Substitution limit exceeded\n"
+                output += "---------------------------\n"
+                output += '/{}/{}/{}'.format(pat, sub, tex)
+                print2_func(output)
+                return
+
             idx = tex.index(pat)
             tex = list(tex)
             sub = list(sub)
 
             tex[idx:idx+len(pat)] = sub
             tex = ''.join(tex)
+            sub = ''.join(sub)
 
-        if tex:
-            if debug:
-                print('\n-----------')
-                print(tex)
-                print('\n-----------')
+            limit -= 1
 
-            execute_code(tex, debug, print_func)
-
+        if tex and not one_step:
+            execute_code(tex, limit, print_func, one_step)
+        
+        if one_step:
+            print2_func(tex)
 
 
 def main():
@@ -72,15 +84,10 @@ def main():
         return
 
     code = ''
-    debug = False
-
     with open(sys.argv[1]) as file:
         code = '\n'.join(line.rstrip('\n') for line in file)
 
-    if len(sys.argv) > 2 and sys.argv[2] == '-d':
-        debug = True
-
-    execute_code(code, debug)
+    execute_code(code)
 
     
 
