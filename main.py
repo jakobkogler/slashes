@@ -43,8 +43,6 @@ class InterpreterWindow(QMainWindow, Ui_MainWindow):
         
         self.step_counter += 1
         execute_code(code, int(self.limitationLineEdit.text()), self.appendToResultTextEdit, True, self.intermediateTextEdit.setPlainText) 
-        if self.intermediateTextEdit.toPlainText().startswith('Substitu'):
-            self.step_counter = 0
 
     def appendToResultTextEdit(self, text):
         self.resultTextEdit.moveCursor(QTextCursor.End)
