@@ -10,6 +10,16 @@
 
     python3 main.py
 
-### Screenshot
+### Screenshots
 
-![sceenshot](https://raw.githubusercontent.com/jakobkogler/slashes/master/screenshot.png)
+#### Run code
+
+![run code](https://raw.githubusercontent.com/jakobkogler/slashes/master/run_code.png)
+
+#### Limit the number of substitutions
+
+![limit subs](https://raw.githubusercontent.com/jakobkogler/slashes/master/limit_subs.png)
+
+#### Step each `///` command
+
+![run code](https://raw.githubusercontent.com/jakobkogler/slashes/master/stepper.png)
