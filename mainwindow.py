@@ -55,8 +55,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "/// Interpreter"))
-        self.runButton.setText(_translate("MainWindow", "Run"))
+        self.runButton.setText(_translate("MainWindow", "Run (Ctrl-R)"))
         self.checkLimitation.setText(_translate("MainWindow", "Limit substitutions to:"))
         self.limitationLineEdit.setText(_translate("MainWindow", "1000"))
-        self.stepButton.setText(_translate("MainWindow", "Step"))
+        self.stepButton.setText(_translate("MainWindow", "Step (Ctrl-S)"))
 

@@ -20,7 +20,7 @@
       <item>
        <widget class="QPushButton" name="runButton">
         <property name="text">
-         <string>Run</string>
+         <string>Run (Ctrl-R)</string>
         </property>
        </widget>
       </item>
@@ -44,7 +44,7 @@
       <item>
        <widget class="QPushButton" name="stepButton">
         <property name="text">
-         <string>Step</string>
+         <string>Step (Ctrl-S)</string>
         </property>
        </widget>
       </item>

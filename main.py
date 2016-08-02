@@ -1,8 +1,8 @@
 from slashes import execute_code
 import sys
-#from PyQt5.QtCore import 
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtGui import QTextCursor
+#from PyQt5.QtCore import *
+from PyQt5.QtWidgets import QApplication, QMainWindow, QShortcut
+from PyQt5.QtGui import QTextCursor, QKeySequence
 from mainwindow import Ui_MainWindow
 
 
@@ -12,6 +12,8 @@ class InterpreterWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.runButton.clicked.connect(self.runCode)
+        self.run_shortcut = QShortcut(QKeySequence("Ctrl+R"), self)
+        self.run_shortcut.activated.connect(self.runCode)
 
     def runCode(self):
         self.resultTextEdit.clear()
