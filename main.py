@@ -23,6 +23,8 @@ class InterpreterWindow(QMainWindow, Ui_MainWindow):
         self.resetButton.clicked.connect(self.resetSteps)
         self.reset_shortcut = QShortcut(QKeySequence("Ctrl+C"), self)
         self.reset_shortcut.activated.connect(self.resetSteps)
+        self.increaseSize.clicked.connect(self.increaseTextSize)
+        self.decreaseSize.clicked.connect(self.decreaseTextSize)
 
     def runCode(self):
         self.intermedBox.hide()
@@ -53,6 +55,20 @@ class InterpreterWindow(QMainWindow, Ui_MainWindow):
         self.step_counter = 0
         self.resultTextEdit.clear()
         self.intermediateTextEdit.clear()
+
+    def increaseTextSize(self):
+        for text_edit in [self.codeTextEdit, self.resultTextEdit, self.intermediateTextEdit]:
+            font = text_edit.font()
+            size = font.pointSize() + 1
+            font.setPointSize(size)
+            text_edit.setFont(font)
+
+    def decreaseTextSize(self):
+        for text_edit in [self.codeTextEdit, self.resultTextEdit, self.intermediateTextEdit]:
+            font = text_edit.font()
+            size = font.pointSize() - 1
+            font.setPointSize(size)
+            text_edit.setFont(font)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
